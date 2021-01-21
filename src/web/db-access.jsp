@@ -4,6 +4,7 @@
 <%@ page import="org.jivesoftware.util.StringUtils" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -50,7 +51,7 @@
             stmt = con.createStatement();
 
             // SQL
-            out.println("<p>Your query: <b>" + sql + "</b></p>");
+            out.println("<p>Your query: <b>" + StringEscapeUtils.escapeHtml4(sql) + "</b></p>");
             stmt.execute(sql);
             rs = stmt.getResultSet();
             if (rs == null) {
